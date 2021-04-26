@@ -1,0 +1,25 @@
+{
+  "name": "airbnb-clone-api",
+  "version": "1.0.0",
+  "description": "clone airbnb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zkonak/airbnb-clone-api.git"
+  },
+  "author": "Zeliha-Samira-Aya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zkonak/airbnb-clone-api/issues"
+  },
+  "homepage": "https://github.com/zkonak/airbnb-clone-api#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
