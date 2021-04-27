@@ -3,8 +3,11 @@ const mysql = require('mysql2');
 // connection à la db
 const db = mysql.createConnection({
   host: 'localhost',
+
+  port: 3306,
+
   user: 'root',
-  password: 'root',
+  password: 'samira',
   database: 'airbnb',
 });
 
