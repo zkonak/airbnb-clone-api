@@ -7,4 +7,5 @@ router.get('/', controller.controller);
 router.get('/api', (req, res) => {
   res.json({ message: 'hello, world!' });
 });
+router.post('/api/signin');
 module.exports = router;

@@ -86,4 +86,6 @@ ADD CONSTRAINT `fk_place_id_idx`
   REFERENCES `airbnb`.`place` (`id-place`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+  
+alter table airbnb.users add column role varchar(10);
 
