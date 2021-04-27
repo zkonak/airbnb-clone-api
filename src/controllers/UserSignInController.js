@@ -1,3 +1,4 @@
+/* eslint-disable quote-props */
 /* eslint-disable no-undef */
 /* eslint-disable no-restricted-globals */
 const bcrypt = require('bcrypt');
@@ -23,9 +24,10 @@ exports.signin = (request, response) => {
           const SECRET = 'pouetpouet';
           const MAXAGE = Math.floor(Date.now() / 1000) + (60 * 60); // 1 hour of expiration
           const userObject = {
-            name: result[0].name,
-            user_id: result[0].id,
-            username: request.body.username, // result[0].username
+            // eslint-disable-next-line space-infix-ops
+            user_id: result[0].id-user,
+            email: request.body.email,
+            role: result[0].role,
             exp: MAXAGE,
           };
           jwt.sign(userObject, SECRET, (errorJWT, token) => {
@@ -33,17 +35,18 @@ exports.signin = (request, response) => {
               response.send(error.message);
             }
 
+            request.user = userObject;
+            response.cookie('authcookie', token, {
+              maxAge: MAXAGE,
+            });
+
             response.status(200).json({
-              token,
-              user: {
-                role: result[0].role,
-                // eslint-disable-next-line space-infix-ops
-                // eslint-disable-next-line no-restricted-globals
-                // eslint-disable-next-line space-infix-ops
-                first_name: result[0].first-name,
-                // eslint-disable-next-line space-infix-ops
-                last_name: result[0].last-name,
-                email: result[0].email,
+              'token': token,
+              'user': {
+                'role': result[0].role,
+                'first_name': result[0].first_name,
+                'last_name': result[0].last_name,
+                'email': result[0].email,
               },
             });
           });
