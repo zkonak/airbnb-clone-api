@@ -12,7 +12,7 @@ router.get('/api', (req, res) => {
 });
 
 router.post('/api/places',roomController.addRooms);
-// router.get('/api/places',roomController.retours);
+router.get('/api/places/:id',roomController.findRooms);
 
 
 module.exports = router;

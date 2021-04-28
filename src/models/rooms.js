@@ -27,3 +27,19 @@ exports.selectRoom = (callback) => {
     callback(null, result);
   });
 };
+
+// accéder à sa maison proposée sur le site avec le id user
+
+exports.getRoom = (id, callback) => {
+  // eslint-disable-next-line no-template-curly-in-string
+  const query = `SELECT *FROM airbnb.users INNER JOIN place WHERE users.id_user= place.user_id AND users.id_user="${id}"`;
+  console.log(query)
+  db.query(query, (error, result) => {
+    if (error) {
+      callback(error, null);
+      return;
+    }
+
+    callback(null, result);
+  });
+};
