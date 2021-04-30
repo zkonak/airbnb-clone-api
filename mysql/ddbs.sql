@@ -1,5 +1,5 @@
 
-CREATE SCHEMA IF NOT EXISTS `airbnb` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `airbnb` DEFAULT CHARACTER SET UTF8MB4 ;
 USE `airbnb` ;
 
 -- -----------------------------------------------------

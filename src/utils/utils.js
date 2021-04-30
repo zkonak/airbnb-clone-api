@@ -21,7 +21,7 @@ exports.theTypePlace = (body) => {
 };
 
 exports.variblePlace = (body) => {
-  const inputs = ['name', 'description', 'rooms', 'bathrooms', 'max_guests', 'price_by_night','available'];
+  const inputs = ['name', 'description', 'rooms', 'bathrooms', 'max_guests', 'price_by_night', 'available'];
   const key = [];
   Object.keys(body).forEach((element) => {
     if (inputs.indexOf(element) < 0) {
@@ -33,6 +33,32 @@ exports.variblePlace = (body) => {
 
 exports.requiresPlace = (body) => {
   const inputs = ['name', 'description', 'rooms', 'bathrooms', 'max_guests', 'price_by_night'];
+  const key = [];
+  inputs.forEach((element) => {
+    if (body[element] === undefined) {
+      key.push(element);
+    }
+  });
+  return key;
+};
+
+// inscription
+
+exports.dataType = (body) => {
+  const inputsString = ['role', 'first_name', 'last_name', 'email', 'password'];
+
+  const key = [];
+  inputsString.forEach((element) => {
+    const type = typeof body[element];
+    if (type !== 'string') {
+      key.push(element);
+    }
+  });
+  return key;
+};
+
+exports.requiresInputs = (body) => {
+  const inputs = ['role', 'first_name', 'last_name', 'email', 'password'];
   const key = [];
   inputs.forEach((element) => {
     if (body[element] === undefined) {
