@@ -12,7 +12,7 @@ const isAuth = (request, response, next) => {
     } else {
       const {
         // eslint-disable-next-line camelcase
-        email, user_id, exp, role,
+        email, id_user, exp, role,
       } = user;
 
       // Useless or not ?!
@@ -23,7 +23,7 @@ const isAuth = (request, response, next) => {
         });
       }
 
-      request.user = { email, user_id, role };
+      request.user = { email, id_user, role };
 
       next();
     }
