@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 const { request } = require('express');
 const db = require('../config/database');
 // rajouter un appart
@@ -33,7 +35,7 @@ exports.selectRoom = (callback) => {
 exports.getRoom = (id, callback) => {
   // eslint-disable-next-line no-template-curly-in-string
   const query = `SELECT *FROM airbnb.users INNER JOIN place WHERE users.id_user= place.user_id AND users.id_user="${id}"`;
-  console.log(query)
+  console.log(query);
   db.query(query, (error, result) => {
     if (error) {
       callback(error, null);
