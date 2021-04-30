@@ -5,10 +5,13 @@ exports.theTypePlace = (body) => {
   const key = [];
   inputsString.forEach((element) => {
     const type = typeof body[element];
-    if (type !== 'string') {
+
+    // eslint-disable-next-line eqeqeq
+    if (type !== 'string' || type == '') {
       key.push(element);
     }
   });
+
   inputsInt.forEach((element) => {
     const type = typeof body[element];
 
@@ -22,6 +25,7 @@ exports.theTypePlace = (body) => {
 
 exports.variblePlace = (body) => {
   const inputs = ['name', 'description', 'rooms', 'bathrooms', 'max_guests', 'price_by_night', 'available'];
+
   const key = [];
   Object.keys(body).forEach((element) => {
     if (inputs.indexOf(element) < 0) {

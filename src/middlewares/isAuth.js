@@ -12,6 +12,7 @@ const isAuth = (request, response, next) => {
     } else {
       const {
         // eslint-disable-next-line camelcase
+
         email, id_user, exp, role,
       } = user;
 
@@ -22,7 +23,6 @@ const isAuth = (request, response, next) => {
           message: 'Vous devez être connecté pour accéder à cette ressource',
         });
       }
-
       request.user = { email, id_user, role };
 
       next();

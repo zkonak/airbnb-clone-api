@@ -25,6 +25,7 @@ exports.signin = (request, response) => {
           const MAXAGE = Math.floor(Date.now() / 1000) + (60 * 60); // 1 hour of expiration
           const userObject = {
             // eslint-disable-next-line space-infix-ops
+
             id_user: result[0].id_user,
             email: request.body.email,
             role: result[0].role,
