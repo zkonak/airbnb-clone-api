@@ -11,6 +11,9 @@ exports.filterRoom = (filtre, callback) => {
     console.log(query);
 
   }
+  else if(filtre.cityName){
+    query = `${query} inner join city where id_city=city_id and name='${filtre.cityName}'`;
+}
 
   db.query(query, (error, result) => {
     if (error) {

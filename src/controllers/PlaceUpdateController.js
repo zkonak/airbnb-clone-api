@@ -1,5 +1,6 @@
 const place = require('../models/UserSignin');
 const util = require('../utils/utils');
+const deletePlace = require('../models/rooms');
 
 exports.updatePlace = (request, response) => {
   const { placeId } = request.params;
@@ -45,4 +46,24 @@ exports.updatePlace = (request, response) => {
     }
   });
   // }
+};
+
+exports.deletePlace = (req, res) => {
+  // eslint-disable-next-line no-unused-vars
+  const { placeId } = req.params;
+  const role = 'tourist';
+  if (!role) {
+    res.status(401).json({ message: 'User not connected' });
+  } else if (role === 'tourist') {
+    res.status(404).json({ message: "Vous n'êtes pas autorisé à accéder à cette ressource" });
+  } else {
+    // eslint-disable-next-line no-unused-vars
+    deletePlace.deletePlace(placeId, (error, result) => {
+      if (error) {
+        res.status(404).json({ message: "La ressource demandée n'existe pas" });
+      } else {
+        res.status(204).json({ message: 'La Place est supprimée' });
+      }
+    });
+  }
 };

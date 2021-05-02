@@ -39,5 +39,6 @@ router.post('/api/places', roomController.addRooms);
 router.delete('/api/bookings/:bookingID', roomBooking.deleteBooking);
 
 router.get('/api/places', filtreController.filterBooking);
+router.delete('/api/places/:placeId', PlaceUpdateController.deletePlace);
 
 module.exports = router;

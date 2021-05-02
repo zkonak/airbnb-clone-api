@@ -45,3 +45,15 @@ exports.getRoom = (id, callback) => {
     callback(null, result);
   });
 };
+
+exports.deletePlace = (placeId, callback) => {
+  db.query(`DELETE FROM airbnb.place
+  WHERE id_place="${placeId}" ;`, (error, result) => {
+    if (error) {
+      console.log('error: ', error);
+      callback(error, null);
+      return;
+    }
+    callback(null, result);
+  });
+};
