@@ -4,10 +4,16 @@ const router = express.Router();
 const controller = require('../controllers/BookingController');
 const isAuth = require('../middlewares/isAuth');
 
+const signupController = require('../controllers/signupController');
+const ficheController = require('../controllers/FicheController');
+const cityController = require('../controllers/cityController');
+const filtreController = require('../controllers/filtreController');
+
 const UserSignInController = require('../controllers/UserSignInController');
 const PlaceUpdateController = require('../controllers/PlaceUpdateController');
 
 const roomController = require('../controllers/roomController');
+
 const roomBooking = require('../controllers/roomBooking');
 
 router.get('/', controller.controller);
@@ -15,13 +21,23 @@ router.get('/api', (req, res) => {
   res.json({ message: 'hello, world!' });
 });
 
-router.post('/api/places', roomController.addRooms);
-router.get('/api/places/:id', roomController.findRooms);
-
 router.post('/api/signin', UserSignInController.signin);
 router.patch('/api/places/:placeId', PlaceUpdateController.updatePlace);
-router.post('/api/places', isAuth, roomController.addRooms);
+
+router.post('/api/places', roomController.addRooms);
+
+router.post('/api/signup', signupController.newAccount);
+router.get('/api/places/:placeId', ficheController.findPlaces);
+router.get('/api/city', cityController.findCity);
+
+router.get('/api/places/:id', roomController.findRooms);
 router.post('/api/bookings', roomBooking.touristBooking);
-router.delete('/api/bookings/:bookingID');
+router.get('/api/bookings',isAuth, roomBooking.findAllBooking);
+
+router.post('/api/places', roomController.addRooms);
+
+router.delete('/api/bookings/:bookingID', roomBooking.deleteBooking);
+
+router.get('/api/places', filtreController.filterBooking);
 
 module.exports = router;

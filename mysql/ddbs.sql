@@ -1,5 +1,5 @@
 
-CREATE SCHEMA IF NOT EXISTS `airbnb` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `airbnb` DEFAULT CHARACTER SET UTF8MB4 ;
 USE `airbnb` ;
 
 -- -----------------------------------------------------
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `airbnb`.`place` (
   `bathrooms` INT NOT NULL,
   `max_guests` INT NOT NULL,
   `price_by_night` INT NOT NULL,
-  `available` TINYINT NOT NULL,
+  `available` DATE NOT NULL,
   PRIMARY KEY (`id_place`),
   INDEX `fk_user_id_idx` (`user_id` ASC),
   INDEX `fk_city_id_idx` (`city_id` ASC),

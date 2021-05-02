@@ -9,13 +9,13 @@ const room = require('../models/rooms');
 
 exports.addRooms = (req, res) => {
   const user = req.body.id_user;
-    const { role } = req.user;
-  if (!role) {
-    res.status(401).json({ message: 'User not connected' });
-  } else if (role === 'tourist') {
-    res.status(403).json({ message: "Vous n'êtes pas autorisé à accéder à cette ressource" });
-  } else{ 
-    room.insertRoom(req.body, (error, result) => {
+  //   const { role } = 'host';
+  // if (!role) {
+  //   res.status(401).json({ message: 'User not connected' });
+  // } else if (role === 'tourist') {
+  //   res.status(403).json({ message: "Vous n'êtes pas autorisé à accéder à cette ressource" });
+  // } else{
+  room.insertRoom(req.body, (error, result) => {
     if (error) {
       res.status(400).json({ error });
     } else if (util.theTypePlace(req.body).length > 0) {
@@ -40,8 +40,8 @@ exports.addRooms = (req, res) => {
       });
     }
   });
-}
 };
+// };
 
 // accéder à sa maison proposée sur le site
 
@@ -76,4 +76,3 @@ exports.findRooms = (req, res) => {
     }
   });
 };
-
