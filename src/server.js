@@ -1,13 +1,16 @@
 const express = require('express');
 const morgan = require('morgan');
 const ejs = require('ejs');
+const cors = require('cors');
 const router = require('./routers');
 
 const server = express();
 
-server.engine("ejs",ejs.renderFile);
-server.set("views","")
+server.engine('ejs', ejs.renderFile);
 
+server.set('views', '');
+
+server.use(cors());
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
