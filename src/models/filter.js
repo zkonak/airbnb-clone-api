@@ -5,15 +5,13 @@ const db = require('../config/database');
 // // ETQ visiteur, je veux rechercher un appartement ou une maison disponible entre deux dates
 
 exports.filterRoom = (filtre, callback) => {
-  let query = 'SELECT * FROM airbnb.place';
+  let query = 'SELECT *,place.name place_name,city.name city_name FROM airbnb.place  inner join city  ';
   if (filtre.check_in && filtre.check_out) {
-    query = `${query} WHERE available BETWEEN '${filtre.check_in}' And '${filtre.check_out}';`;
+    query = `${query} WHERE id_city=city_id and available BETWEEN '${filtre.check_in}' And '${filtre.check_out}';`;
     console.log(query);
-
+  } else if (filtre.cityName) {
+    query = `${query}  where id_city=city_id and name='${filtre.cityName}'`;
   }
-  else if(filtre.cityName){
-    query = `${query} inner join city where id_city=city_id and name='${filtre.cityName}'`;
-}
 
   db.query(query, (error, result) => {
     if (error) {
