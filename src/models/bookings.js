@@ -31,7 +31,7 @@ exports.deletePlace = (bookingId, callback) => {
 
 exports.getbookingUSERS = (req, idUser, callback) => {
   // eslint-disable-next-line no-template-curly-in-string
-  const query = `SELECT *FROM airbnb.booking INNER JOIN place ,users   WHERE booking.place_id= place.id_place   and users.id_user=booking.user_id AND id_user=${idUser}`;
+  const query = `SELECT *, city.name city_name, place.name place_name FROM airbnb.booking INNER JOIN place ,users ,city  WHERE booking.place_id= place.id_place   and users.id_user=booking.user_id AND  place.city_id=city.id_city and id_user=${idUser}`;
   console.log(query);
   db.query(query, (error, result) => {
     if (error) {

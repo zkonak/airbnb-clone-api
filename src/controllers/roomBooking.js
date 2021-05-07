@@ -66,8 +66,9 @@ exports.findAllBooking = (req, res) => {
           place: {
             id_place: result[i].id_place,
             city_id: result[i].city_id,
+            city_name: result[i].city_name,
             user_id: result[i].user_id,
-            name: result[i].name,
+            place_name: result[i].place_name,
             description: result[i].description,
             rooms: result[i].rooms,
             bathrooms: result[i].bathrooms,

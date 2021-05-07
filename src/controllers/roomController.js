@@ -8,25 +8,23 @@ const room = require('../models/rooms');
 // ajouter une maison
 
 exports.addRooms = (req, res) => {
-  // const user = req.body.id_user;
-  const  role  = 'host';
+  const { user } = req;
+  console.log(user);
+  const { role } = user;
   if (!role) {
     res.status(401).json({ message: 'User not connected' });
   } else if (role === 'tourist') {
     res.status(403).json({ message: "Vous n'êtes pas autorisé à accéder à cette ressource" });
   } else {
     room.insertRoom(req.body, (error, result) => {
-     
       if (error) {
         res.status(400).json({ error });
         console.log(error);
-       
-       } else if (util.theTypePlace(req.body).length > 0) {
-         res.status(400).json({ message: `Le champ ${util.theTypePlace(req.body)}   n'est pas renseigné` });
-       } else if (util.theTypePlace(req.body).length > 0) {
-         res.status(400).json({ message: `Le champ ${util.theTypePlace(req.body)}   doit être un nombre entier` });
-       }
-       else {
+      // } else if (util.theTypePlace(req.body).length > 0) {
+      //   res.status(400).json({ message: `Le champ ${util.theTypePlace(req.body)}   n'est pas renseigné` });
+      // } else if (util.theTypePlace(req.body).length > 0) {
+      //   res.status(400).json({ message: `Le champ ${util.theTypePlace(req.body)}   doit être un nombre entier` });
+      } else {
         room.selectRoom((error, result) => {
           res.status(201).json({
 

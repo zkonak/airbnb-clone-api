@@ -22,23 +22,23 @@ router.get('/api', (req, res) => {
 });
 
 router.post('/api/signin', UserSignInController.signin);
-router.patch('/api/places/:placeId', PlaceUpdateController.updatePlace);
+router.patch('/api/places/:placeId', isAuth,PlaceUpdateController.updatePlace);
 
-router.post('/api/places', roomController.addRooms);
+router.post('/api/places',isAuth, roomController.addRooms);
 
 router.post('/api/signup', signupController.newAccount);
 router.get('/api/places/:placeId', ficheController.findPlaces);
 router.get('/api/city', cityController.findCity);
 
 router.get('/api/places/:id', roomController.findRooms);
-router.post('/api/bookings', roomBooking.touristBooking);
+router.post('/api/bookings',isAuth, roomBooking.touristBooking);
 router.get('/api/bookings',isAuth, roomBooking.findAllBooking);
 
-router.post('/api/places', roomController.addRooms);
+router.post('/api/places',isAuth, roomController.addRooms);
 
-router.delete('/api/bookings/:bookingID', roomBooking.deleteBooking);
+router.delete('/api/bookings/:bookingID',isAuth, roomBooking.deleteBooking);
 
 router.get('/api/places', filtreController.filterBooking);
-router.delete('/api/places/:placeId', PlaceUpdateController.deletePlace);
+router.delete('/api/places/:placeId',isAuth, PlaceUpdateController.deletePlace);
 
 module.exports = router;

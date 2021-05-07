@@ -3,7 +3,7 @@ const fiche = require('../models/fiche');
 exports.findPlaces = (req, res) => {
   const { placeId } = req.params;
 
-  const user = req.body.id_user;
+  //const user = req.user.id_user;
   // l'envoi de id permet de référencier les users
 
   fiche.findPlaces(placeId, (error, result) => {
