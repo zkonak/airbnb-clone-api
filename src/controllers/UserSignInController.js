@@ -44,10 +44,11 @@ exports.signin = (request, response) => {
             response.status(200).json({
               'token': token,
               'user': {
-                'role': result[0].role,
-                'first_name': result[0].first_name,
-                'last_name': result[0].last_name,
-                'email': result[0].email,
+              'id_user': result[0].id_user,
+              'role': result[0].role,
+              'first_name': result[0].first_name,
+              'last_name': result[0].last_name,
+              'email': result[0].email,
               },
             });
           });
