@@ -5,6 +5,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '1985Athelete.',
+
   database: 'airbnb',
 });
 
