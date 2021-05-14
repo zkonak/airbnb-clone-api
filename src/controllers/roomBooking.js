@@ -32,7 +32,7 @@ exports.touristBooking = (req, res) => {
 
 exports.deleteBooking = (req, res) => {
   // eslint-disable-next-line no-unused-vars
-  const { id_booking } = req.params;
+  const { bookingId } = req.params;
   const role = 'hote';
   if (!role) {
     res.status(401).json({ message: 'User not connected' });
@@ -40,7 +40,7 @@ exports.deleteBooking = (req, res) => {
     res.status(404).json({ message: "la demande n'est pas trouvé" });
   } else {
     // eslint-disable-next-line no-unused-vars
-    booking.deletePlace(id_booking, (error, result) => {
+    booking.deletePlace(bookingId, (error, result) => {
       if (error) {
         res.send("Cet appartement n'est pas disponible ");
       } else {

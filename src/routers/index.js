@@ -36,7 +36,7 @@ router.get('/api/bookings',isAuth, roomBooking.findAllBooking);
 
 router.post('/api/places',isAuth, roomController.addRooms);
 
-router.delete('/api/bookings/:bookingID',isAuth, roomBooking.deleteBooking);
+router.delete('/api/bookings/:bookingId',isAuth, roomBooking.deleteBooking);
 
 router.get('/api/places', filtreController.filterBooking);
 router.delete('/api/places/:placeId',isAuth, PlaceUpdateController.deletePlace);
